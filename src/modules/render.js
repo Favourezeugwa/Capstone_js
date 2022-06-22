@@ -1,17 +1,50 @@
 import getMatches from './getdata.js';
+import renderComment from './comment_modal.js';
 
-const displayMatches = async (matchList, url) => {
-  const data = await getMatches(url);
+const displayMatches = async () => {
+  const matchList = document.getElementById('matchesContainer');
+  const data = await getMatches();
   matchList.innerHTML = '';
-  data.response.forEach((item) => {
-    const matchesItems = `<div class="col-md-3 mt-4">
-      <div class="card">
-          <div class="card-title">${item.title}</div>
-          <div class="card-body"><img id="card-image" src="${item.thumbnail}">
-          </div>
+  data.response.slice(0, 20).forEach((item, index) => {
+    const matchesItems = `
+    <div class="col-md-3 mt-4">
+    <div class="card">
+    <img class="card-img" src="${item.thumbnail}" alt="Card image">
+    <div class="card-body">
+      <div class="row m-2">
+      <div class="col-9 p-0 item-title">
+      <p class="card-title">${item.title}</p>
       </div>
-  </div>`;
+      <div class="col-3 like">
+      <i class="fa-regular fa-heart"></i>
+      <div class="like_title">10 likes</div>
+      </div>
+      </div>
+
+      <div class="row m-2">
+      <div class="col-6 p-0 text-center" id="${index}">
+        <button class="btn commentModal">Comments</button>
+      </div>
+      <div class="col-6 p-0 text-center">
+      <button class="btn">Reservations</button>
+      </div>
+      </div>
+    </div>
+    </div>
+    </div>`;
     matchList.innerHTML += matchesItems;
   });
 };
-export default displayMatches;
+
+const diplayComments = async () => {
+  const commentButtons = document.querySelectorAll('.commentModal');
+  commentButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const currentShow = e.path[1];
+      const id = currentShow.getAttribute('id');
+      renderComment(id);
+    });
+  });
+};
+
+export { displayMatches, diplayComments };
