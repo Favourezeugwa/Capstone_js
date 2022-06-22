@@ -82,3 +82,11 @@ h1 {
 .VideoPlayerThW {
   border-radius: 7px !important;
 }
+
+#comment__container {
+  padding: 0;
+}
+
+#comment__container li {
+  list-style-type: none;
+}
