@@ -3,7 +3,7 @@ import getMatches from './getdata.js';
 
 const renderList = (reservations, reservationContainer) => {
   Object.keys(reservations).forEach((item) => {
-    reservationContainer.innerHTML = `<li>${reservations[item].date_start} - ${reservations[item].date_end} by ${reservations[item].username}</li>`;
+    reservationContainer.innerHTML += `<li>${reservations[item].date_start} - ${reservations[item].date_end} by ${reservations[item].username}</li>`;
   });
 };
 
