@@ -10,6 +10,8 @@ const displayMatches = async (matchList, url) => {
           <div class="card-body"><img id="card-image" src="${item.thumbnail}">
           </div>
       </div>
+      <button class="btn btn-light">comments</button><br>
+      <button class="btn btn-light">reservation</button>
   </div>`;
     matchList.innerHTML += matchesItems;
   });
