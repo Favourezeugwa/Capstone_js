@@ -1,10 +1,8 @@
 import { invUrl, invAppId } from './url_config.js';
 import getMatches from './getdata.js';
 
-
 const renderList = (reservations, reservationContainer) => {
   Object.keys(reservations).forEach((item) => {
-    console.log(reservations[item].username);
     reservationContainer.innerHTML = `<li>${reservations[item].date_start} - ${reservations[item].date_end} by ${reservations[item].username}</li>`;
   });
 };
