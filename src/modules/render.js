@@ -24,10 +24,10 @@ const displayMatches = async () => {
 
       <div class="row m-2">
       <div class="col-6 p-0 text-center" id="${index}">
-        <button class="btn commentModal">Comments</button>
+        <button class="btn commentModal bg-dark text-white">Comments</button>
       </div>
       <div class="col-6 p-0 text-center" id = "${index}">
-      <button class="btn reservationModal">Reservations</button>
+      <button class="bg-dark text-white btn reservationModal">Reservations</button>
       </div>
       </div>
     </div>
