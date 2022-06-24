@@ -34,11 +34,9 @@ const openReservationModal = async (item, reservations) => {
         <ul id="reservation__container"></ul>
         </div>
     </div>
-    <iframe name="blank"></iframe>
-    <form action="${invUrl}/${invAppId}/reservations" id="reservationForm" method="POST" target="blank">
-        <input type="hidden" value = "${item.videos[0].id}" name="item_id"/>
+    <form action="#" method="POST">
         <div class="mb-3">
-        <label for="username"><b>Your name:<b/></label>
+          <label for="username"><b>Your name:<b/></label>
           <input
             type="text"
             class="col-md-4"
@@ -80,13 +78,6 @@ const openReservationModal = async (item, reservations) => {
   };
   const reservationContainer = document.getElementById('reservation__container');
   renderList(reservations, reservationContainer);
-
-  const form = document.getElementById('reservationForm');
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    getreservations();
-    form.reset();
-  });
 };
 
 const getreservations = async (index) => {
@@ -110,13 +101,32 @@ const renderReservation = async (index) => {
   });
 };
 
+const addForm = () => {
+  const username = document.getElementById('username').value;
+  const startDate = document.getElementById('date_start').value;
+  const endDate = document.getElementById('date_end').value;
 
-// const reserveButton = document.getElementById('reserve-btn');
-// reserveButton.addEventListener('submit', (event) => {
-//   event.preventDefault();
-//   getreservations();
-// });
+  fetch(`${invUrl}/${invAppId}/reservations`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username, date_start: startDate, date_end: endDate,
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        getreservations();
+      }).catch((error) => (error)),
+  });
+}
 
-// const reserveButton = document.getElementById('reserve-btn');
+const form = document.getElementById('reservationForm');
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  addForm();
+  form.reset();
+});
 
-export default renderReservation;
+export { renderReservation, addForm };

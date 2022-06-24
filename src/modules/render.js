@@ -1,7 +1,7 @@
 import getMatches from './getdata.js';
 import renderComment from './comment_modal.js';
 // import renderReservation from './reserve_modal.js';
-import renderReservation from './hmm.js';
+import { renderReservation, addForm } from './hmm.js';
 
 const displayMatches = async () => {
   const matchList = document.getElementById('matchesContainer');
@@ -59,5 +59,12 @@ const displayReservation = async () => {
     });
   });
 };
+
+// const form = document.getElementById('reservationForm');
+// form.addEventListener('submit', (event) => {
+//   event.preventDefault();
+//   addForm();
+//   form.reset();
+// });
 
 export { displayMatches, diplayComments, displayReservation };
