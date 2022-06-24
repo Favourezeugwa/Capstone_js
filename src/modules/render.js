@@ -1,5 +1,5 @@
 import getMatches from './getdata.js';
-import {renderComment} from './comment_modal.js';
+import { renderComment } from './comment_modal.js';
 import renderReservation from './reservation_modal.js';
 import { getLikes } from './likeFunctionality.js';
 
@@ -10,10 +10,9 @@ const displayMatches = async () => {
   console.log(likes);
   matchList.innerHTML = '';
   data.response.slice(0, 20).forEach((item, index) => {
-   
     const like = likes
-    .filter((like) => typeof like.item_id === 'string')
-    .filter((like) => like.item_id === item.videos[0].id)[0];
+      .filter((like) => typeof like.item_id === 'string')
+      .filter((like) => like.item_id === item.videos[0].id)[0];
 
     const matchesItems = `
     <div class="col-md-3 mt-4">

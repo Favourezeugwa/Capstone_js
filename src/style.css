@@ -105,9 +105,9 @@ ul {
   align-items: center;
   text-align: center;
 }
-  @media screen and (max-width: 780px) {
-    .modal-content {
-      width: 90%;
-    }
-  }
 
+@media screen and (max-width: 780px) {
+  .modal-content {
+    width: 90%;
+  }
+}
