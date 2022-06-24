@@ -1,5 +1,5 @@
 import getMatches from './getdata.js';
-import renderComment from './comment_modal.js';
+import {renderComment} from './comment_modal.js';
 
 const displayMatches = async () => {
   const matchList = document.getElementById('matchesContainer');
@@ -23,10 +23,10 @@ const displayMatches = async () => {
 
       <div class="row m-2">
       <div class="col-6 p-0 text-center" id="${index}">
-        <button class="btn commentModal">Comments</button>
+        <button class="btn commentModal bg-dark text-white">Comments</button>
       </div>
       <div class="col-6 p-0 text-center">
-      <button class="btn">Reservations</button>
+      <button class="btn bg-dark text-white">Reservations</button>
       </div>
       </div>
     </div>
