@@ -13,6 +13,7 @@ const getComments = async (index) => {
 
 const commentList = async (comments, commentContainer) => {
   commentContainer.innerHTML = '';
+
   Object.keys(comments).forEach((item) => {
     commentContainer.innerHTML += `<li>${comments[item].creation_date} &nbsp; ${comments[item].username} : ${comments[item].comment}</li>`;
   });
@@ -44,7 +45,7 @@ const openModal = async (item, comments) => {
  
     <div class="row">
         <div class="col-12 text-left">
-        <h3>Comments (${comments.length})</h3>
+        <h3>Comments (<span id="comment-counter">${comments.length}</span>)</h3>
         <ul id="comment__container">
           
         </ul>
@@ -85,6 +86,7 @@ const openModal = async (item, comments) => {
     window.location.reload();
   };
   const commentContainer = document.getElementById('comment__container');
+  const commentCounter = document.getElementById('comment-counter');
   commentList(comments, commentContainer);
   const Form = document.getElementById('form');
   const sendURL = `${invUrl}/${invAppId}/comments`;
@@ -94,6 +96,7 @@ const openModal = async (item, comments) => {
     let comments1 = [];
     comments1 = await getComments(item.videos[0].id);
     commentList(comments1, commentContainer);
+    commentCounter.textContent = `${comments1.length}`;
   });
 };
 
