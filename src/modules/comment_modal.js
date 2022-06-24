@@ -26,7 +26,6 @@ const openModal = async (item, comments) => {
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>
-      <br>
       <div class="video_player">
       ${item.videos[0].embed}
       </div>
