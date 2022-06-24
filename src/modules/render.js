@@ -1,5 +1,6 @@
 import getMatches from './getdata.js';
-import { renderComment } from './comment_modal.js';
+import renderComment from './comment_modal.js';
+import renderReservation from './reserve_modal.js';
 
 const displayMatches = async () => {
   const matchList = document.getElementById('matchesContainer');
@@ -25,8 +26,8 @@ const displayMatches = async () => {
       <div class="col-6 p-0 text-center" id="${index}">
         <button class="btn commentModal bg-dark text-white">Comments</button>
       </div>
-      <div class="col-6 p-0 text-center">
-      <button class="btn bg-dark text-white">Reservations</button>
+      <div class="col-6 p-0 text-center" id = "${index}">
+      <button class="btn bg-dark text-white reservationModal">Reservations</button>
       </div>
       </div>
     </div>
@@ -47,4 +48,15 @@ const diplayComments = async () => {
   });
 };
 
-export { displayMatches, diplayComments };
+const displayReservation = async () => {
+  const reservationButtons = document.querySelectorAll('.reservationModal');
+  reservationButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const currentShow = e.path[1];
+      const id = currentShow.getAttribute('id');
+      renderReservation(id);
+    });
+  });
+};
+
+export { displayMatches, diplayComments, displayReservation };
