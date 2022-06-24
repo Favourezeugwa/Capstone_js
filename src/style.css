@@ -95,6 +95,7 @@ li {
 #comment__container li {
   list-style-type: none;
 }
+
 #reservationForm {
   align-items: center;
   text-align: center;
@@ -103,8 +104,10 @@ li {
 ul {
   align-items: center;
   text-align: center;
-@media screen and (max-width: 780px) {
-  .modal-content {
-    width: 90%;
+
+  @media screen and (max-width: 780px) {
+    .modal-content {
+      width: 90%;
+    }
   }
 }
