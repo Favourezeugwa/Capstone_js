@@ -88,6 +88,10 @@ h1 {
   padding: 0;
 }
 
+li {
+  list-style: none;
+}
+
 #comment__container li {
   list-style-type: none;
 }
@@ -101,8 +105,4 @@ h1 {
 ul {
   align-items: center;
   text-align: center;
-}
-
-li {
-  list-style: none;
 }
