@@ -1,7 +1,6 @@
 import getMatches from './getdata.js';
 import renderComment from './comment_modal.js';
-// import renderReservation from './reserve_modal.js';
-import { renderReservation, addForm } from './hmm.js';
+import renderReservation from './reservation_modal.js';
 
 const displayMatches = async () => {
   const matchList = document.getElementById('matchesContainer');
@@ -27,7 +26,7 @@ const displayMatches = async () => {
       <div class="col-6 p-0 text-center" id="${index}">
         <button class="btn commentModal">Comments</button>
       </div>
-      <div class="col-6 p-0 text-center" id = "${index}">
+      <div class="col-6 p-0 text-center" id="${index}">
       <button class="btn reservationModal">Reservations</button>
       </div>
       </div>
@@ -59,12 +58,5 @@ const displayReservation = async () => {
     });
   });
 };
-
-// const form = document.getElementById('reservationForm');
-// form.addEventListener('submit', (event) => {
-//   event.preventDefault();
-//   addForm();
-//   form.reset();
-// });
 
 export { displayMatches, diplayComments, displayReservation };

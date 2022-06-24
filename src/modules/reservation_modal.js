@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/*
 import { invUrl, invAppId } from './url_config.js';
 import getMatches from './getdata.js';
 
@@ -12,7 +10,7 @@ const renderList = (reservations, reservationContainer) => {
 const openReservationModal = async (item, reservations) => {
   const modal = document.getElementById('modal__container');
   modal.innerHTML += `<div id="modalID" class="modal">
-
+    
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -32,15 +30,13 @@ const openReservationModal = async (item, reservations) => {
     </div>
     <div class="row">
         <div class="col-12 text-center">
-        <h3>reservations (${reservations.length})</h3>
+        <h3>reservations (<span id="counter">${reservations.length}</span>)</h3>
         <ul id="reservation__container"></ul>
         </div>
     </div>
-    <iframe name="blank"></iframe>
-    <form action="${invUrl}/${invAppId}/reservations" id="reservationForm" method="POST" target="blank">
-        <input type="hidden" value = "${item.videos[0].id}" name="item_id"/>
+    <form action="#" id="reservationForm" method="POST">
         <div class="mb-3">
-        <label for="username"><b>Your name:<b/></label>
+          <label for="username"><b>Your name:<b/></label>
           <input
             type="text"
             class="col-md-4"
@@ -68,7 +64,7 @@ const openReservationModal = async (item, reservations) => {
             placeholder="End date"
           />
         </div>
-        <button type="submit" class="btn btn-primary px-5" id="reserve-btn" onClick="window.location.reload()">Reserve</button>
+        <button type="submit" class="btn btn-primary px-5" id="reserve-btn">Reserve</button>
       </form>
     </main>
   </div>`;
@@ -82,6 +78,48 @@ const openReservationModal = async (item, reservations) => {
   };
   const reservationContainer = document.getElementById('reservation__container');
   renderList(reservations, reservationContainer);
+
+  const getreservationsTwo = async (index) => {
+    const res = await fetch(`${invUrl}/${invAppId}/reservations?item_id=${index}`).then((response) => response.json());
+    return res;
+  };
+
+  const addForm = async (index) => {
+    const username = document.getElementById('username').value;
+    const startDate = document.getElementById('date_start').value;
+    const endDate = document.getElementById('date_end').value;
+
+    await fetch(`${invUrl}/${invAppId}/reservations`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        item_id: index,
+        username,
+        date_start: startDate,
+        date_end: endDate,
+      }),
+    }).then((res) => res.text()).then(() => {
+    })
+      .catch((error) => (error));
+
+    const data = await getreservationsTwo(index);
+    document.getElementById('counter').innerHTML = data.length;
+
+    let litem = '';
+    data.forEach((data) => {
+      litem += `<li><b>From</b>${data.date_start} <b>To</b>${data.date_end} <b>By</b>${data.username}</li>`;
+    });
+    document.getElementById('reservation__container').innerHTML = litem;
+  };
+
+  const form = document.getElementById('reservationForm');
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    addForm(item.videos[0].id);
+    form.reset();
+  });
 };
 
 const getreservations = async (index) => {
@@ -95,7 +133,9 @@ const getreservations = async (index) => {
 
 const renderReservation = async (index) => {
   const data = await getMatches();
+
   const reservations = await getreservations(data.response[index].videos[0].id);
+
   Promise.all([data.response[index], reservations]).then((data) => {
     if (data[1].error) {
       openReservationModal(data[0], []);
@@ -106,4 +146,3 @@ const renderReservation = async (index) => {
 };
 
 export default renderReservation;
-*/

@@ -93,12 +93,16 @@ h1 {
 }
 
 /* form section */
-form {
+#reservationForm {
   align-items: center;
   text-align: center;
 }
 
-iframe {
-  display: none;
+ul {
+  align-items: center;
+  text-align: center;
 }
 
+li {
+  list-style: none;
+}
