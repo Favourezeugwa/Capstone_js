@@ -1,6 +1,7 @@
 import getMatches from './getdata.js';
 import renderComment from './comment_modal.js';
-import renderReservation from './reserve_modal.js';
+// import renderReservation from './reserve_modal.js';
+import renderReservation from './hmm.js';
 
 const displayMatches = async () => {
   const matchList = document.getElementById('matchesContainer');

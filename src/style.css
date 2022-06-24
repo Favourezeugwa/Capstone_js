@@ -65,8 +65,9 @@ h1 {
 .close {
   color: #aaa;
   float: right;
-  font-size: 28px;
+  font-size: 40px;
   font-weight: bold;
+  padding-bottom: 20px;
 }
 
 .close:hover,
@@ -90,3 +91,14 @@ h1 {
 #comment__container li {
   list-style-type: none;
 }
+
+/* form section */
+form {
+  align-items: center;
+  text-align: center;
+}
+
+iframe {
+  display: none;
+}
+

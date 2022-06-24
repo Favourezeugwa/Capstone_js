@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/*
 import { invUrl, invAppId } from './url_config.js';
 import getMatches from './getdata.js';
 
@@ -12,7 +10,7 @@ const renderList = (reservations, reservationContainer) => {
 const openReservationModal = async (item, reservations) => {
   const modal = document.getElementById('modal__container');
   modal.innerHTML += `<div id="modalID" class="modal">
-
+    
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -82,6 +80,13 @@ const openReservationModal = async (item, reservations) => {
   };
   const reservationContainer = document.getElementById('reservation__container');
   renderList(reservations, reservationContainer);
+
+  const form = document.getElementById('reservationForm');
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    getreservations();
+    form.reset();
+  });
 };
 
 const getreservations = async (index) => {
@@ -105,5 +110,13 @@ const renderReservation = async (index) => {
   });
 };
 
+
+// const reserveButton = document.getElementById('reserve-btn');
+// reserveButton.addEventListener('submit', (event) => {
+//   event.preventDefault();
+//   getreservations();
+// });
+
+// const reserveButton = document.getElementById('reserve-btn');
+
 export default renderReservation;
-*/
