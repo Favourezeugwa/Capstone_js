@@ -1,24 +1,24 @@
 import { invUrl, invAppId } from './url_config.js';
 import getMatches from './getdata.js';
 import sendComment from './sendComment.js';
+
 const getComments = async (index) => {
-    try {
-      const res = await fetch(`${invUrl}/${invAppId}/comments?item_id=${index}`);
-      return await res.json();
-    } catch (error) {
-      return error;
-    }
-  };
-  
+  try {
+    const res = await fetch(`${invUrl}/${invAppId}/comments?item_id=${index}`);
+    return await res.json();
+  } catch (error) {
+    return error;
+  }
+};
+
 const commentList = async (comments, commentContainer) => {
-    commentContainer.innerHTML = '';
+  commentContainer.innerHTML = '';
   Object.keys(comments).forEach((item) => {
     commentContainer.innerHTML += `<li>${comments[item].creation_date} &nbsp; ${comments[item].username} : ${comments[item].comment}</li>`;
   });
 };
 
 const openModal = async (item, comments) => {
-    
   const modal = document.getElementById('modal__container');
   modal.innerHTML += `<div id="myModal" class="modal">
     
@@ -88,16 +88,14 @@ const openModal = async (item, comments) => {
   commentList(comments, commentContainer);
   const Form = document.getElementById('form');
   const sendURL = `${invUrl}/${invAppId}/comments`;
-Form.addEventListener('submit', async (e) => {
+  Form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    await sendComment(sendURL,Form);
-    let comments1 =[];
+    await sendComment(sendURL, Form);
+    let comments1 = [];
     comments1 = await getComments(item.videos[0].id);
-    console.log(comments1);
     commentList(comments1, commentContainer);
   });
 };
-
 
 const renderComment = async (index) => {
   const data = await getMatches();
@@ -111,4 +109,4 @@ const renderComment = async (index) => {
   });
 };
 
-export { commentList, renderComment};
+export { commentList, renderComment };

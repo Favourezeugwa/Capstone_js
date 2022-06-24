@@ -90,11 +90,9 @@ h1 {
 #comment__container li {
   list-style-type: none;
 }
+
 @media screen and (max-width: 780px) {
   .modal-content {
     width: 90%;
-  }
-  .card {
-   
   }
 }

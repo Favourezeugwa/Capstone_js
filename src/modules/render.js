@@ -1,5 +1,5 @@
 import getMatches from './getdata.js';
-import {renderComment} from './comment_modal.js';
+import { renderComment } from './comment_modal.js';
 
 const displayMatches = async () => {
   const matchList = document.getElementById('matchesContainer');

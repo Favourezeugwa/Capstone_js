@@ -1,7 +1,5 @@
-
-const sendComment = async (url,Form ) => {
+const sendComment = async (url, Form) => {
   try {
-
     const res = await fetch(url, {
       method: 'POST',
       body: JSON.stringify({
@@ -17,7 +15,6 @@ const sendComment = async (url,Form ) => {
     Form.comment.value = '';
     return await res.json();
   } catch (error) {
-
     return false;
   }
 };
