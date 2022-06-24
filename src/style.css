@@ -14,8 +14,8 @@ h1 {
   display: none;
 }
 
-.card {
-  height: 290px;
+.fa-calendar-days {
+  color: #888;
 }
 
 .card-body {
@@ -41,7 +41,6 @@ h1 {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -57,8 +56,9 @@ h1 {
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 60%;
+  width: 45%;
   margin-bottom: 5%;
+  margin-top: 5%;
 }
 
 /* The Close Button */
@@ -89,4 +89,10 @@ h1 {
 
 #comment__container li {
   list-style-type: none;
+}
+
+@media screen and (max-width: 780px) {
+  .modal-content {
+    width: 90%;
+  }
 }

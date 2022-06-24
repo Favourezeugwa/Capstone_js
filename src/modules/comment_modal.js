@@ -1,9 +1,20 @@
 import { invUrl, invAppId } from './url_config.js';
 import getMatches from './getdata.js';
+import sendComment from './sendComment.js';
 
-const commentList = (comments, commentContainer) => {
+const getComments = async (index) => {
+  try {
+    const res = await fetch(`${invUrl}/${invAppId}/comments?item_id=${index}`);
+    return await res.json();
+  } catch (error) {
+    return error;
+  }
+};
+
+const commentList = async (comments, commentContainer) => {
+  commentContainer.innerHTML = '';
   Object.keys(comments).forEach((item) => {
-    commentContainer.innerHTML = `<li>${comments[item].creation_date} &nbsp; ${comments[item].username} : ${comments[item].comment}</li>`;
+    commentContainer.innerHTML += `<li>${comments[item].creation_date} &nbsp; ${comments[item].username} : ${comments[item].comment}</li>`;
   });
 };
 
@@ -14,28 +25,56 @@ const openModal = async (item, comments) => {
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>
+      <br>
       <div class="video_player">
       ${item.videos[0].embed}
       </div>
-      <div class="row">
-      <div class="col-6"><h2>${item.title}</h2></div>
-      <div class="col-6"> <h4>${item.competition}</h4></div>
+      <div class="row mt-3">
+      <div class="col-12"><h2>${item.title}</h2></div>
+      <div class="col-12"> <h4>${item.competition}</h4></div>
       </div>
-      <p>date: ${item.date}</p>
-      <div>
-      <a href="${item.matchviewUrl}" class="btn bg-dark text-white" target="_blank">Match Link</a>
+      <p><i class="fa-solid fa-calendar-days"></i> ${item.date}</p>
+
+      <div class="btns d-flex ">
+      <a href="${item.matchviewUrl}" class="btn bg-dark text-white mr-3" target="_blank">Match Link</a>
       <a href="${item.competitionUrl}"  class="btn bg-dark text-white" target="_blank">Competition Link</a>
-      <div>
+      </div>
+
       <br>
-    </div>
+ 
     <div class="row">
-        <div class="col-12 text-center">
+        <div class="col-12 text-left">
         <h3>Comments (${comments.length})</h3>
         <ul id="comment__container">
           
         </ul>
         </div>
     </div>
+    <div class="container-fulid mt-3">
+  <h3 class="text-left">Add Comment</h3> 
+    <div class="row justify-content-center">
+    <div class="col-md-12 col-xs-12">
+  <form action="#" method="POST" class="was-validated" id="form">
+    <div class="mb-3 mt-3">
+      <label for="uname" class="form-label">Username:</label>
+      <input type="text" class="form-control" id="uname" placeholder="Enter username" name="username" required>
+      <input type="hidden" value="${item.videos[0].id}" class="form-control"  name="item_id">
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="mb-3">
+      <label for="pwd" class="form-label">Comment:</label>
+      <textarea class="form-control" rows="5" id="comment" name="comment" required></textarea>
+        
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+  <button type="submit" class="btn bg-dark text-white">Submit</button>
+  </form>
+  <div>
+  <div>
+</div>
   </div>`;
 
   const modal1 = document.getElementById('myModal');
@@ -47,15 +86,15 @@ const openModal = async (item, comments) => {
   };
   const commentContainer = document.getElementById('comment__container');
   commentList(comments, commentContainer);
-};
-
-const getComments = async (index) => {
-  try {
-    const res = await fetch(`${invUrl}/${invAppId}/comments?item_id=${index}`);
-    return await res.json();
-  } catch (error) {
-    return error;
-  }
+  const Form = document.getElementById('form');
+  const sendURL = `${invUrl}/${invAppId}/comments`;
+  Form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    await sendComment(sendURL, Form);
+    let comments1 = [];
+    comments1 = await getComments(item.videos[0].id);
+    commentList(comments1, commentContainer);
+  });
 };
 
 const renderComment = async (index) => {
@@ -70,4 +109,4 @@ const renderComment = async (index) => {
   });
 };
 
-export default renderComment;
+export { commentList, renderComment };
