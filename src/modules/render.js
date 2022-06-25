@@ -37,7 +37,7 @@ const displayMatches = async () => {
         <button class="btn commentModal bg-dark text-white">Comments</button>
       </div>
       <div class="col-6 p-0 text-center" id="${index}">
-      <button class="btn reservationModal">Reservations</button>
+      <button class="btn reservationModal bg-dark text-white">Reservations</button>
       </div>
       </div>
     </div>
