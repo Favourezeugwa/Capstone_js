@@ -1,12 +1,18 @@
 import getMatches from './getdata.js';
 import { renderComment } from './comment_modal.js';
 import renderReservation from './reservation_modal.js';
+import getLikes from './likeFunctionality.js';
 
 const displayMatches = async () => {
   const matchList = document.getElementById('matchesContainer');
   const data = await getMatches();
+  const likes = await getLikes();
   matchList.innerHTML = '';
   data.response.slice(0, 20).forEach((item, index) => {
+    const like = likes
+      .filter((like) => typeof like.item_id === 'string')
+      .filter((like) => like.item_id === item.videos[0].id)[0];
+
     const matchesItems = `
     <div class="col-md-3 mt-4">
     <div class="card">
@@ -18,7 +24,7 @@ const displayMatches = async () => {
       </div>
       <div class="col-3 like">
       <i class="fa-regular fa-heart"></i>
-      <div class="like_title">10 likes</div>
+      <div class="like_title" ><span id="likes">${like ? like.likes : 0}</span> likes</div>
       </div>
       </div>
 
