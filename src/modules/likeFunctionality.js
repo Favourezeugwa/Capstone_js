@@ -9,4 +9,4 @@ const getLikes = async () => {
   }
 };
 
-export { getLikes };
+export default getLikes;

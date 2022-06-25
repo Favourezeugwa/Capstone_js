@@ -1,13 +1,12 @@
 import getMatches from './getdata.js';
 import { renderComment } from './comment_modal.js';
 import renderReservation from './reservation_modal.js';
-import { getLikes } from './likeFunctionality.js';
+import getLikes from './likeFunctionality.js';
 
 const displayMatches = async () => {
   const matchList = document.getElementById('matchesContainer');
   const data = await getMatches();
   const likes = await getLikes();
-  console.log(likes);
   matchList.innerHTML = '';
   data.response.slice(0, 20).forEach((item, index) => {
     const like = likes
