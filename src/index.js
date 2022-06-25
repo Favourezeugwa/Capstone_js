@@ -3,7 +3,7 @@ import {
   displayMatches, diplayComments, displayReservation, displayLikes, homeItemsCounter,
 } from './modules/render.js';
 
-const render = async () => {
+export const render = async () => {
   await homeItemsCounter();
   await displayMatches();
   await displayLikes();

@@ -9,7 +9,8 @@ const renderList = (reservations, reservationContainer) => {
 
 const openReservationModal = async (item, reservations) => {
   const modal = document.getElementById('modal__container');
-  modal.innerHTML += `<div id="modalID" class="modal">
+  modal.innerHTML = '';
+  modal.innerHTML += `<div id="myModal2" class="modal">
     
     <!-- Modal content -->
     <div class="modal-content">
@@ -34,47 +35,36 @@ const openReservationModal = async (item, reservations) => {
         <ul id="reservation__container"></ul>
         </div>
     </div>
-    <form action="#" id="reservationForm" method="POST">
-        <div class="mb-3">
-          <label for="username"><b>Your name:<b/></label>
-          <input
-            type="text"
-            class="col-md-4"
-            id="username"
-            name="username"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="date_start"><b>Start date:<b/></label>
-          <input
-            type="date"
-            class="col-md-4"
-            id="date_start"
-            name="date_start"
-            placeholder="Start date"
-          />
-        </div>
-        <div class="mb-3">
-        <label for="date_end"><b>End date:<b/></label>
-          <input
-            type="date"
-            class="col-md-4"
-            id="date_end"
-            name="date_end"
-            placeholder="End date"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary px-5" id="reserve-btn">Reserve</button>
-      </form>
+    <form action="#" method="POST" class="was-validated" id="reservationForm">
+    <div class="mb-3 mt-3">
+      <label for="uname" class="form-label">Username:</label>
+      <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="mb-3 mt-3">
+    <label for="uname" class="form-label">Start Date:</label>
+    <input type="date" class="form-control" id="date_start" placeholder="Enter Start Date" name="date_start" required>
+    <div class="valid-feedback">Valid.</div>
+    <div class="invalid-feedback">Please fill out this field.</div>
+  </div>
+  <div class="mb-3 mt-3">
+  <label for="uname" class="form-label">End Date:</label>
+  <input type="date" class="form-control" id="date_end" placeholder="Enter End Date" name="date_end" required>
+  <div class="valid-feedback">Valid.</div>
+  <div class="invalid-feedback">Please fill out this field.</div>
+</div>
+  <button type="submit" id="reserve-btn" class="btn bg-dark text-white">Submit</button>
+  </form>
     </main>
   </div>`;
 
-  const modal1 = document.getElementById('modalID');
-  modal1.style.display = 'block';
+  const modal2 = document.getElementById('myModal2');
+  modal2.style.display = 'block';
+
   const span = document.getElementsByClassName('close')[0];
-  span.onclick = () => {
-    modal.style.display = 'none';
-    window.location.reload();
+  span.onclick = async () => {
+    modal2.style.display = 'none';
   };
   const reservationContainer = document.getElementById('reservation__container');
   renderList(reservations, reservationContainer);
