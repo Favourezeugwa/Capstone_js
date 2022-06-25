@@ -2,6 +2,9 @@ import getMatches from './getdata.js';
 import { renderComment } from './comment_modal.js';
 import renderReservation from './reservation_modal.js';
 import { addLike, getLikes } from './likeFunctionality.js';
+const homeItemsCounter= async()=>{
+
+}
 const displayMatches = async () => {
   const matchList = document.getElementById('matchesContainer');
   const data = await getMatches();
@@ -77,4 +80,4 @@ const displayLikes = async () => {
   });
 });
 };
-export { displayMatches, diplayComments, displayReservation,displayLikes };
+export { displayMatches, diplayComments, displayReservation,displayLikes,homeItemsCounter };
