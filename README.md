@@ -17,14 +17,16 @@ JEST LIBRARY
 
 ## Overview
 
-### Screenshot
+### Screenshots
 
-![](./images/desktop-snip.png)
-![](./images/mobile-snip.png)
+![](./images/desktop-snip-2.png)
+![](./images/mobile-snip-2.png)
 
 ### Demo
 
 [Link to Live demo]()
+
+[Link to project video recording](https://drive.google.com/file/d/1hLF3XCu7s6IOeLfGvFF3QJWBdc8i9zuB/view?usp=sharing)
 
 ### Install & Setup
 
@@ -73,8 +75,8 @@ To run the tests for linters locally, you must have node installed on your compu
 👤 **Favour Amarachi Ezeugwa**
 
 - GitHub: [@Favourezeugwa](https://github.com/Favourezeugwa)
-- LinkedIn: [Favour Amarachi Ezeugwa](https://www.linkedin.com/in/favour-amarachi-ezeugwa-a5bb31149/)
-- Twitter:[Favour_ezeugwa](https://twitter.com/Favour_ezeugwa)
+- LinkedIn: [@Favour Amarachi Ezeugwa](https://www.linkedin.com/in/favour-amarachi-ezeugwa-a5bb31149/)
+- Twitter:[@Favour_ezeugwa](https://twitter.com/Favour_ezeugwa)
 
 👤 **Shahnawaza Ali**
 
