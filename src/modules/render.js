@@ -1,7 +1,7 @@
 import getMatches from './getdata.js';
 import { renderComment } from './comment_modal.js';
 import renderReservation from './reservation_modal.js';
-import { getLikes } from './likeFunctionality.js';
+import { addLike, getLikes } from './likeFunctionality.js';
 
 const displayMatches = async () => {
   const matchList = document.getElementById('matchesContainer');
@@ -24,7 +24,7 @@ const displayMatches = async () => {
       <p class="card-title">${item.title}</p>
       </div>
       <div class="col-3 like">
-      <i class="fa-regular fa-heart"></i>
+      <i class="fa-regular fa-heart likeBtn"id="${item.videos[0].id}"></i>
       <div class="like_title" ><span id="likes">${like ? like.likes : 0}</span> likes</div>
       </div>
       </div>
@@ -65,5 +65,15 @@ const displayReservation = async () => {
     });
   });
 };
-
-export { displayMatches, diplayComments, displayReservation };
+const displayLikes = async () => {
+  const likeBtn = document.querySelectorAll('.likeBtn');
+  likeBtn.forEach((item)=> {
+    item.addEventListener('click', async (e) => {
+      const path = e.path[1];
+      const id = path.getAttribute('id');
+      alert(id);
+      await addLike(id);
+  });
+});
+};
+export { displayMatches, diplayComments, displayReservation,displayLikes };
