@@ -20,8 +20,6 @@ JEST LIBRARY
 ### Screenshot
 
 ![](./images/desktop-snip.png)
-![](./images/desktop-snip-comment.png)
-![](./images/desktop-snip-reservation.png)
 ![](./images/mobile-snip.png)
 
 ### Demo
