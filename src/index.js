@@ -1,5 +1,7 @@
 import './style.css';
-import { displayMatches, diplayComments, displayReservation, displayLikes } from './modules/render.js';
+import {
+  displayMatches, diplayComments, displayReservation, displayLikes,
+} from './modules/render.js';
 
 const render = async () => {
   await displayMatches();

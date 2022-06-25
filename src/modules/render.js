@@ -2,6 +2,7 @@ import getMatches from './getdata.js';
 import { renderComment } from './comment_modal.js';
 import renderReservation from './reservation_modal.js';
 import { addLike, getLikes } from './likeFunctionality.js';
+
 const displayMatches = async () => {
   const matchList = document.getElementById('matchesContainer');
   const data = await getMatches();
@@ -25,7 +26,6 @@ const displayMatches = async () => {
       <div class="like_title" ><span id="counter${item.videos[0].id}">${like ? like.likes : 0}</span> likes</div>
       </div>
       </div>
-​
       <div class="row m-2">
       <div class="col-6 p-0 text-center" id="${index}">
         <button class="btn commentModal bg-dark text-white">Comments</button>
@@ -62,19 +62,21 @@ const displayReservation = async () => {
 };
 const displayLikes = async () => {
   const likeBtn = document.querySelectorAll('.likeBtn');
-  likeBtn.forEach((item)=> {
+  likeBtn.forEach((item) => {
     item.addEventListener('click', async (e) => {
       const path = e.path[0];
       const id = path.getAttribute('id');
       await addLike(id);
-      const likeCounter = document.getElementById('counter'+id);
+      const likeCounter = document.getElementById(`counter${id}`);
       const likes = await getLikes();
       const like = likes
-      .filter((like) => typeof like.item_id === 'string')
-      .filter((like) => like.item_id === id)[0];
-   
+        .filter((like) => typeof like.item_id === 'string')
+        .filter((like) => like.item_id === id)[0];
+
       likeCounter.textContent = `${like.likes}`;
+    });
   });
-});
 };
-export { displayMatches, diplayComments, displayReservation,displayLikes };
+export {
+  displayMatches, diplayComments, displayReservation, displayLikes,
+};
