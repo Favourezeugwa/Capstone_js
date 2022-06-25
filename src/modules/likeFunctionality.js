@@ -8,5 +8,17 @@ const getLikes = async () => {
     return error;
   }
 };
-
-export default getLikes;
+const addLike = async (id) => {
+  const data = {
+    method: 'POST',
+    body: JSON.stringify({
+      item_id: id,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  };
+  const result = await fetch(`${invUrl}/${invAppId}/likes`, data);
+  return result;
+};
+export { getLikes, addLike };
