@@ -1,6 +1,5 @@
 
 import { invUrl, invAppId } from './url_config.js';
-
 const getLikes = async () => {
   try {
     const res = await fetch(`${invUrl}/${invAppId}/likes`);
@@ -9,16 +8,14 @@ const getLikes = async () => {
     return error;
   }
 };
-
-const addLike = (id) => {
+const addLike = async (id) => {
   const data = {
     method: 'POST',
     body: JSON.stringify({
-      item_id: ids,
-
+      item_id: id,
     }),
     headers: {
-      'Content-type': 'application/json: charset=UTF-8',
+      'Content-type': 'application/json; charset=UTF-8',
     },
   };
   const result = await fetch(`${invUrl}/${invAppId}/likes`,data);
