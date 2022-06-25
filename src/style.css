@@ -110,15 +110,6 @@ li {
   text-align: center;
 }
 
-.reservationModal {
-  background-color: rgba(99, 98, 98, 0.671);
-  color: #fff;
-}
-
-.reservationModal:hover {
-  background-color: rgba(5, 5, 5, 0.603);
-}
-
 ul {
   align-items: center;
   text-align: center;
