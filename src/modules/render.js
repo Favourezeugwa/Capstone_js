@@ -2,7 +2,6 @@ import getMatches from './getdata.js';
 import { renderComment } from './comment_modal.js';
 import renderReservation from './reservation_modal.js';
 import { addLike, getLikes } from './likeFunctionality.js';
-
 const displayMatches = async () => {
   const matchList = document.getElementById('matchesContainer');
   const data = await getMatches();
