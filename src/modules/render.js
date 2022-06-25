@@ -3,6 +3,12 @@ import { renderComment } from './comment_modal.js';
 import renderReservation from './reservation_modal.js';
 import { addLike, getLikes } from './likeFunctionality.js';
 
+const homeItemsCounter = async () => {
+  const data = await getMatches();
+  const counter = data.response.slice(0, 20).length;
+  const counterId = document.getElementById('home-counter');
+  counterId.textContent = `${counter}`;
+};
 const displayMatches = async () => {
   const matchList = document.getElementById('matchesContainer');
   const data = await getMatches();
@@ -72,11 +78,10 @@ const displayLikes = async () => {
       const like = likes
         .filter((like) => typeof like.item_id === 'string')
         .filter((like) => like.item_id === id)[0];
-
       likeCounter.textContent = `${like.likes}`;
     });
   });
 };
 export {
-  displayMatches, diplayComments, displayReservation, displayLikes,
+  displayMatches, diplayComments, displayReservation, displayLikes, homeItemsCounter,
 };
