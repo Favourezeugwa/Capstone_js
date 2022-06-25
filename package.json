@@ -1,0 +1,49 @@
+{
+  "name": "capstone_js",
+  "version": "1.0.0",
+  "description": "This is a Webpack Leaderboard project based on REST API. With this app, you can add players score to the board and get the scores on the leadder board list using API endpoint.  ## Major Technologies HTML5 CSS JAVASCRIPT REST API NPM WEBPACK ### Demo Coming Soon ### Install & Setup",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "webpack --mode development",
+    "start": "webpack serve --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shahnawaza75/Capstone_js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shahnawaza75/Capstone_js/issues"
+  },
+  "homepage": "https://github.com/shahnawaza75/Capstone_js#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.5",
+    "@babel/node": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^28.1.1",
+    "css-loader": "^6.7.1",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.26.0",
+    "hint": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "jest": "^28.1.1",
+    "style-loader": "^3.3.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.21.0",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.2"
+  },
+  "dependencies": {
+    "babel-loader": "^8.2.5",
+    "bootstrap": "^5.1.3"
+  }
+}
