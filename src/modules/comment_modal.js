@@ -1,7 +1,6 @@
 import { invUrl, invAppId } from './url_config.js';
 import getMatches from './getdata.js';
 import sendComment from './sendComment.js';
-import { render } from '../index.js';
 
 const getComments = async (index) => {
   try {
@@ -102,7 +101,6 @@ const openModal = async (item, comments) => {
 };
 
 const renderComment = async (index) => {
-
   const data = await getMatches();
   const comments = await getComments(data.response[index].videos[0].id);
   Promise.all([data.response[index], comments]).then((data) => {
